@@ -17,16 +17,24 @@ sudo chkconfig gitlab-runner on
 # Add gitlab-runner config
 mkdir -p /etc/gitlab-runner
 cat > /etc/gitlab-runner/config.toml <<- EOM
+[[runners]]
+  limit = 10
+  # (...)
+  executor = "docker+machine"
+  [runners.machine]
+    IdleCount = 2
+    IdleTime = 1800
+    # (...)
 
 EOM
 
 # Register gitlab runner
 gitlab-runner register --non-interactive \
-                       --name "gitlabrunner" \
+                       --name "gitlab-vm" \
                        --url "https://gitlab.com" \
-                       --registration-token "11111" \
+                       --registration-token "Qsc1sPfjb6X8f9GZcDaC" \
                        --executor docker \
-                       --docker-image "ruby:latest"
+                       --docker-image "alpine:latest"
 
 # Start services
 service docker start
