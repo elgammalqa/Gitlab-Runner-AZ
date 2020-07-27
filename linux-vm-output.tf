@@ -24,3 +24,5 @@ output "linux_vm_admin_password" {
   #sensitive   = true
 }
 
+output "tls_private_key" { value = "tls_private_key.gitlab_ssh.private_key_pem" }
+
