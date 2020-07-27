@@ -31,7 +31,7 @@ EOM
 # Register gitlab runner
 gitlab-runner register --non-interactive \
                        --name "gitlab-vm" \
-                       --url "https://gitlab.com" \
+                       --url "https://gitlab.corum.sh" \
                        --registration-token "Qsc1sPfjb6X8f9GZcDaC" \
                        --executor docker \
                        --docker-image "alpine:latest"
